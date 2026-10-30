@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dar El Baraka – Boutique en ligne | متجر دار البركة</title>
+<meta name="description" content="Boutique en ligne – livraison partout en Algérie / متجر إلكتروني – التوصيل إلى كامل الولايات">
+<style>
+:root{--bg:#f5f6f2;--card:#fff;--ink:#13201b;--mute:#66706b;--brand:#0f4c3a;--brand2:#0b3a2c;--sun:#e2a72e;--red:#c8372d;--line:#e3e6e0;--r:14px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{font-family:"Segoe UI",system-ui,-apple-system,"Noto Sans Arabic",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+h1,h2,h3{font-family:Georgia,"Times New Roman","Noto Naskh Arabic","Traditional Arabic",serif;line-height:1.2}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:16px}
+header{position:sticky;top:0;z-index:20;background:var(--brand2);color:#fff}
+.top{display:flex;align-items:center;gap:10px;padding-block:10px;flex-wrap:wrap}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:1.25rem;color:#fff;text-decoration:none;margin-inline-end:auto}
+.logo span{color:var(--sun)}
+.ibtn{background:rgba(255,255,255,.12);border:0;color:#fff;border-radius:999px;padding:8px 14px;font-weight:600}
+.ibtn:hover{background:rgba(255,255,255,.22)}
+.cartbtn{position:relative}
+.badge{background:var(--sun);color:#1a1300;border-radius:999px;font-size:.75rem;padding:1px 7px;margin-inline-start:6px;font-weight:700}
+nav{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px}
+nav a{color:#d6e6df;text-decoration:none;padding:6px 12px;border-radius:999px;white-space:nowrap;font-size:.95rem}
+nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+.hero{background:var(--brand);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.14;background:conic-gradient(from 45deg at 50% 50%,#fff 0 25%,transparent 0 50%,#fff 0 75%,transparent 0) 0 0/46px 46px}
+.hero .wrap{position:relative;padding-block:clamp(36px,8vw,84px);max-width:760px;margin-inline:0 auto}
+[dir=rtl] .hero .wrap{margin-inline:auto 0}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);margin-bottom:14px}
+.hero p{font-size:1.1rem;color:#d6e6df;max-width:520px;margin-bottom:22px}
+.btn{display:inline-block;background:var(--sun);color:#1a1300;border:0;border-radius:12px;padding:12px 22px;font-weight:700;text-decoration:none}
+.btn:hover{filter:brightness(1.07)}
+.btn.wa{background:#1fa855;color:#fff;width:100%;font-size:1.05rem}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+section{padding-block:36px}
+h2{font-size:1.6rem;margin-bottom:16px}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.cat{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:18px 10px;text-align:center;font-weight:600}
+.cat .e{font-size:2rem;display:block}
+.cat:hover,.cat.on{border-color:var(--brand);background:#e9f2ee}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.search{flex:1 1 240px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#eee}
+.card .b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card small{color:var(--mute)}
+.price{font-weight:800;color:var(--brand);font-size:1.1rem}
+.card .btn{margin-top:auto;padding:10px;text-align:center;background:var(--brand);color:#fff}
+.empty{text-align:center;color:var(--mute);padding:40px 0;grid-column:1/-1}
+footer{background:var(--brand2);color:#c4d8cf;padding-block:28px;font-size:.92rem}
+footer a{color:var(--sun)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+.ov.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;inset-block:0;inset-inline-end:0;width:min(440px,100%);background:#fff;z-index:40;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column}
+[dir=rtl] .drawer{transform:translateX(-105%)}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.dh h2{margin:0;font-size:1.3rem}
+.x{background:none;border:0;font-size:1.6rem;line-height:1}
+.db{overflow-y:auto;padding:12px 16px 20px;flex:1}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.item img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.q{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;margin-top:4px}
+.q button{border:0;background:none;width:30px;height:30px;font-size:1.1rem}
+.q span{min-width:26px;text-align:center}
+.rm{background:none;border:0;color:var(--red);font-size:.85rem;text-decoration:underline}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:1.15rem;padding:14px 0}
+label{display:block;font-weight:600;font-size:.92rem;margin-top:10px}
+.f{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin-top:4px;background:#fff}
+.f.bad{border-color:var(--red)}
+.err{color:var(--red);font-size:.82rem;min-height:1em}
+.note{font-size:.8rem;color:var(--mute);margin-top:10px}
+.toast{position:fixed;inset-inline:0;bottom:20px;margin-inline:auto;width:max-content;max-width:90%;background:#13201b;color:#fff;padding:10px 18px;border-radius:999px;z-index:50;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+#admin{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:16px}
+#admin[hidden]{display:none}
+.ap{background:#fff;border-radius:var(--r);width:min(880px,100%)}
+.ag{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:760px){.ag{grid-template-columns:1fr 1fr}}
+.ab{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.sm{padding:6px 12px;font-size:.85rem;border-radius:8px}
+.btn.del{background:var(--red);color:#fff}
+.help{background:#fff7e0;border:1px solid #ecd48a;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-bottom:14px}
+.prev{width:120px;height:120px;object-fit:cover;border-radius:10px;margin-top:8px;display:block;background:#eee}
+.prev[hidden]{display:none}
+.al{max-height:60vh;overflow-y:auto}
+@media(max-width:520px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.card .b{padding:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a class="logo" href="#home">Dar El <span>Baraka</span></a>
+      <button class="ibtn" id="langBtn" aria-label="Language">العربية</button>
+      <button class="ibtn cartbtn" id="cartBtn"><span data-i="cart"></span><span class="badge" id="count">0</span></button>
+    </div>
+    <nav>
+      <a href="#home" data-i="home"></a>
+      <a href="#categories" data-i="cats"></a>
+      <a href="#shop" data-i="shop"></a>
+      <a href="#contact" data-i="contact"></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <div class="wrap">
+      <h1 data-i="heroT"></h1>
+      <p data-i="heroP"></p>
+      <a class="btn" href="#shop" data-i="shopNow"></a>
+    </div>
+  </div>
+
+  <section id="categories"><div class="wrap">
+    <h2 data-i="cats"></h2>
+    <div class="cats" id="cats"></div>
+  </div></section>
+
+  <section id="shop"><div class="wrap">
+    <h2 data-i="shop"></h2>
+    <div class="tools">
+      <input class="search" id="q" type="search" data-ph="search" autocomplete="off">
+    </div>
+    <div class="grid" id="grid"></div>
+  </div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <strong>Dar El Baraka</strong><br>
+  <span data-i="foot1"></span><br>
+  <a id="waLink" href="#" target="_blank" rel="noopener">WhatsApp</a> &nbsp;|&nbsp; <a href="#admin">Admin</a>
+  <p class="note" data-i="foot2"></p>
+</div></footer>
+
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+  <div class="dh"><h2 data-i="cart"></h2><button class="x" id="close" aria-label="Close">×</button></div>
+  <div class="db">
+    <div id="items"></div>
+    <div id="checkout">
+      <div class="tot"><span data-i="total"></span><span id="total"></span></div>
+      <h3 data-i="details"></h3>
+      <label for="cName" data-i="name"></label>
+      <input class="f" id="cName" autocomplete="name"><div class="err" id="eName"></div>
+      <label for="cPhone" data-i="phone"></label>
+      <input class="f" id="cPhone" type="tel" inputmode="tel" placeholder="0555 12 34 56" autocomplete="tel" dir="ltr"><div class="err" id="ePhone"></div>
+      <label for="cCity" data-i="city"></label>
+      <input class="f" id="cCity" list="wilayas" autocomplete="address-level2"><div class="err" id="eCity"></div>
+      <datalist id="wilayas"></datalist>
+      <label for="cAddr" data-i="addr"></label>
+      <input class="f" id="cAddr" autocomplete="street-address"><div class="err" id="eAddr"></div>
+      <button class="btn wa" id="order" style="margin-top:14px" data-i="order"></button>
+      <button class="btn ghost" id="orderOnline" style="margin-top:10px;width:100%" data-i="orderOnline"></button>
+      <p class="note" data-i="note"></p>
+    </div>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="products.js"></script>
+<script>
+/* ============ CONFIGURATION — EDIT THESE ============ */
+// WhatsApp number in international format, digits only (no +, spaces or dashes).
+// Algeria example: 0555 12 34 56  ->  213555123456
+const WHATSAPP_NUMBER = "213555123456";
+const STORE_NAME = "Dar El Baraka";
+// Google Apps Script Web App URL (ends with /exec) that saves orders into your Google Sheet.
+// Leave it empty ("") to hide the "Send order online" button until you finish the setup.
+const SHEETS_URL = "https://script.google.com/macros/s/AKfycby-94dRSPDVWeHyyfq-7WlXyUrBwA5VcwK885mVZWYBIRrXM3wn3YhPbBX_AMPDdGRQOw/exec";
+/* ==================================================== */
+
+/* Products. To use a real photo, put the file next to index.html (e.g. images/p1.jpg)
+   and set img: "images/p1.jpg". Leave img empty to keep the placeholder. */
+const CATEGORIES = [
+  {id:"mode",  e:"👗", fr:"Mode",       ar:"أزياء"},
+  {id:"maison",e:"🏠", fr:"Maison",     ar:"المنزل"},
+  {id:"beaute",e:"💄", fr:"Beauté",     ar:"الجمال"},
+  {id:"epicerie",e:"🍯",fr:"Épicerie",  ar:"مواد غذائية"}
+];
+let PRODUCTS = [
+  {id:1, cat:"mode",  price:4500, e:"🧣", c:"#c8372d", img:"", fr:"Foulard en soie",          ar:"وشاح حرير"},
+  {id:2, cat:"mode",  price:7900, e:"👜", c:"#8a5a2b", img:"", fr:"Sac en cuir artisanal",    ar:"حقيبة جلدية يدوية"},
+  {id:3, cat:"mode",  price:12500,e:"🧥", c:"#2f4858", img:"", fr:"Burnous traditionnel",     ar:"برنوس تقليدي"},
+  {id:4, cat:"maison",price:3200, e:"🫖", c:"#0f4c3a", img:"", fr:"Service à thé en laiton",  ar:"طقم شاي نحاسي"},
+  {id:5, cat:"maison",price:5600, e:"🕯️", c:"#b9852a", img:"", fr:"Bougies parfumées (lot de 3)", ar:"شموع معطرة (3 قطع)"},
+  {id:6, cat:"maison",price:9800, e:"🧺", c:"#7a6a4f", img:"", fr:"Tapis berbère 120×80",     ar:"زربية أمازيغية 120×80"},
+  {id:7, cat:"beaute",price:1800, e:"🧴", c:"#9b5d7e", img:"", fr:"Huile d’argan pure 100 ml",ar:"زيت الأركان 100 مل"},
+  {id:8, cat:"beaute",price:950,  e:"🧼", c:"#4f7f6f", img:"", fr:"Savon noir au henné",      ar:"صابون بلدي بالحناء"},
+  {id:9, cat:"beaute",price:2400, e:"🌹", c:"#b23a5b", img:"", fr:"Eau de rose naturelle",    ar:"ماء الورد الطبيعي"},
+  {id:10,cat:"epicerie",price:2200,e:"🍯",c:"#d19a1f", img:"", fr:"Miel de montagne 500 g",   ar:"عسل جبلي 500 غ"},
+  {id:11,cat:"epicerie",price:1500,e:"🫒",c:"#5b6b2a", img:"", fr:"Huile d’olive de Kabylie 1 L",ar:"زيت زيتون القبائل 1 لتر"},
+  {id:12,cat:"epicerie",price:1200,e:"🌴",c:"#8f5a2a", img:"", fr:"Dattes Deglet Nour 1 kg",  ar:"تمر دقلة نور 1 كغ"}
+];
+const WILAYAS = ["Alger","Oran","Constantine","Annaba","Blida","Batna","Sétif","Tlemcen","Béjaïa","Tizi Ouzou","Mostaganem","Biskra","Ouargla","Ghardaïa","Chlef","Djelfa","Skikda","Médéa","Bordj Bou Arréridj","Boumerdès","Tipaza","Sidi Bel Abbès","Mascara","Jijel","Laghouat"];
+
+const T = {
+ fr:{home:"Accueil",cats:"Catégories",shop:"Nos produits",contact:"Contact",cart:"Panier",search:"Rechercher un produit…",
+  heroT:"Le meilleur de l’artisanat algérien, chez vous.",heroP:"Mode, maison, beauté et produits du terroir. Commandez en quelques clics, nous confirmons par WhatsApp.",
+  shopNow:"Voir les produits",all:"Tout",add:"Ajouter au panier",added:"Ajouté au panier",none:"Aucun produit trouvé. Essayez un autre mot ou une autre catégorie.",
+  empty:"Votre panier est vide. Ajoutez un produit pour commencer.",total:"Total",details:"Informations de livraison",name:"Nom complet",phone:"Téléphone",city:"Ville / Wilaya",addr:"Adresse de livraison",
+  order:"Commander via WhatsApp",orderOnline:"Envoyer la commande en ligne",sending:"Envoi en cours…",sentOk:"Commande envoyée ! Le vendeur vous contactera.",sentFail:"Envoi impossible. Réessayez ou commandez via WhatsApp.",remove:"Supprimer",
+  eName:"Entrez votre nom complet (2 caractères minimum).",ePhone:"Numéro invalide. Exemple : 0555 12 34 56.",eCity:"Entrez votre ville ou wilaya.",eAddr:"Entrez une adresse de livraison (5 caractères minimum).",
+  note:"Aucun paiement en ligne. Votre commande n’est pas enregistrée sur le site : elle est envoyée au vendeur par WhatsApp ou via le formulaire en ligne, et il la confirme avec vous.",
+  foot1:"Livraison dans toutes les wilayas. Paiement à la livraison à confirmer par WhatsApp.",foot2:"Les prix sont en dinars algériens (DA).",
+  cur:"DA",msgHead:"Nouvelle commande",msgItems:"Produits",msgTotal:"Total",msgCust:"Client",msgPhone:"Téléphone",msgCity:"Ville",msgAddr:"Adresse",msgFee:"Frais de livraison à confirmer."},
+ ar:{home:"الرئيسية",cats:"الأصناف",shop:"منتجاتنا",contact:"اتصل بنا",cart:"السلة",search:"ابحث عن منتج…",
+  heroT:"أجمل الصناعات الجزائرية، إلى باب بيتك.",heroP:"أزياء، منزل، جمال ومنتجات المنطقة. اطلب ببضع نقرات ونؤكد الطلب عبر واتساب.",
+  shopNow:"تصفح المنتجات",all:"الكل",add:"أضف إلى السلة",added:"تمت الإضافة إلى السلة",none:"لا توجد منتجات. جرّب كلمة أو صنفاً آخر.",
+  empty:"سلتك فارغة. أضف منتجاً للبدء.",total:"المجموع",details:"معلومات التوصيل",name:"الاسم الكامل",phone:"رقم الهاتف",city:"المدينة / الولاية",addr:"عنوان التوصيل",
+  order:"اطلب عبر واتساب",orderOnline:"أرسل الطلب عبر الموقع",sending:"جارٍ الإرسال…",sentOk:"تم إرسال الطلب! سيتصل بك البائع.",sentFail:"تعذّر الإرسال. حاول مجدداً أو اطلب عبر واتساب.",remove:"حذف",
+  eName:"أدخل اسمك الكامل (حرفان على الأقل).",ePhone:"رقم غير صالح. مثال: 0555 12 34 56",eCity:"أدخل مدينتك أو ولايتك.",eAddr:"أدخل عنوان التوصيل (5 أحرف على الأقل).",
+  note:"لا يوجد دفع إلكتروني. لا يتم حفظ طلبك على الموقع: يُرسل إلى البائع عبر واتساب أو نموذج الطلب في الموقع ويؤكده معك.",
+  foot1:"التوصيل إلى جميع الولايات. الدفع عند الاستلام يُؤكَّد عبر واتساب.",foot2:"الأسعار بالدينار الجزائري (د.ج).",
+  cur:"د.ج",msgHead:"طلب جديد",msgItems:"المنتجات",msgTotal:"المجموع",msgCust:"الزبون",msgPhone:"الهاتف",msgCity:"المدينة",msgAddr:"العنوان",msgFee:"سعر التوصيل يُؤكَّد لاحقاً."}
+};
+
+const $ = s => document.querySelector(s);
+let lang = "fr", cat = "all", cart = {};
+try { lang = localStorage.getItem("lang") || "fr"; cart = JSON.parse(localStorage.getItem("cart") || "{}"); } catch(e){}
+let ADMIN_HASH = "";
+if (window.STORE_DATA) { if (Array.isArray(STORE_DATA.products)) PRODUCTS = STORE_DATA.products; ADMIN_HASH = STORE_DATA.adminHash || ""; }
+try { const d = JSON.parse(localStorage.getItem("draft") || "null"); if (d) { if (Array.isArray(d.products)) PRODUCTS = d.products; if (d.adminHash) ADMIN_HASH = d.adminHash; } } catch(e){}
+const t = k => T[lang][k];
+const nm = o => o[lang];
+const money = n => n.toLocaleString("fr-FR") + " " + t("cur");
+const find = id => PRODUCTS.find(p => p.id == id);
+const save = () => { try { localStorage.setItem("cart", JSON.stringify(cart)); localStorage.setItem("lang", lang); } catch(e){} };
+
+function ph(p){
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p.c}"/><stop offset="1" stop-color="#13201b"/></linearGradient></defs><rect width="400" height="400" fill="url(#g)"/><text x="200" y="240" font-size="130" text-anchor="middle">${p.e}</text></svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i]").forEach(el => el.textContent = t(el.dataset.i));
+  document.querySelectorAll("[data-ph]").forEach(el => el.placeholder = t(el.dataset.ph));
+  $("#langBtn").textContent = lang === "ar" ? "Français" : "العربية";
+  renderCats(); renderGrid(); renderCart(); save();
+}
+
+function renderCats(){
+  const all = [{id:"all",e:"✨",fr:T.fr.all,ar:T.ar.all}, ...CATEGORIES];
+  $("#cats").innerHTML = all.map(c => `<button class="cat ${c.id===cat?"on":""}" data-cat="${c.id}"><span class="e">${c.e}</span>${nm(c)}</button>`).join("");
+}
+
+function renderGrid(){
+  const q = $("#q").value.trim().toLowerCase();
+  const list = PRODUCTS.filter(p => (cat==="all"||p.cat===cat) && (p.fr+" "+p.ar).toLowerCase().includes(q));
+  $("#grid").innerHTML = list.length ? list.map(p => {
+    const c = CATEGORIES.find(x => x.id===p.cat);
+    return `<article class="card"><img src="${p.img||ph(p)}" alt="${nm(p)}" loading="lazy" data-id="${p.id}"><div class="b"><small>${nm(c)}</small><h3 style="font-size:1rem">${nm(p)}</h3><div class="price">${money(p.price)}</div><button class="btn" data-add="${p.id}">${t("add")}</button></div></article>`;
+  }).join("") : `<p class="empty">${t("none")}</p>`;
+}
+
+function renderCart(){
+  Object.keys(cart).forEach(id => { if (!find(id)) delete cart[id]; });
+  const ids = Object.keys(cart);
+  let total = 0, n = 0;
+  $("#items").innerHTML = ids.length ? ids.map(id => {
+    const p = find(id), q = cart[id]; total += p.price*q; n += q;
+    return `<div class="item"><img src="${p.img||ph(p)}" alt="" data-id="${p.id}"><div><strong>${nm(p)}</strong><div>${money(p.price)}</div><div class="q"><button data-dec="${id}" aria-label="-">−</button><span>${q}</span><button data-inc="${id}" aria-label="+">+</button></div></div><div style="text-align:end"><div class="price">${money(p.price*q)}</div><button class="rm" data-rm="${id}">${t("remove")}</button></div></div>`;
+  }).join("") : `<p class="empty">${t("empty")}</p>`;
+  $("#checkout").style.display = ids.length ? "" : "none";
+  $("#total").textContent = money(total);
+  $("#count").textContent = n;
+  save();
+}
+
+function toast(msg){ const el=$("#toast"); el.textContent=msg; el.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("on"),3200); }
+function openCart(on){ $("#drawer").classList.toggle("on",on); $("#ov").classList.toggle("on",on); $("#drawer").setAttribute("aria-hidden",!on); document.body.style.overflow = on ? "hidden" : ""; }
+
+/* Image fallback if a custom image path is wrong */
+document.addEventListener("error", e => {
+  if (e.target.tagName==="IMG" && e.target.dataset.id){ const p=find(e.target.dataset.id); e.target.onerror=null; e.target.src=ph(p); }
+}, true);
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const d = b.dataset;
+  if (d.cat){ cat = d.cat; renderCats(); renderGrid(); document.getElementById("shop").scrollIntoView(); }
+  else if (d.add){ cart[d.add] = (cart[d.add]||0)+1; renderCart(); toast(t("added")); }
+  else if (d.inc){ cart[d.inc]++; renderCart(); }
+  else if (d.dec){ if (--cart[d.dec] < 1) delete cart[d.dec]; renderCart(); }
+  else if (d.rm){ delete cart[d.rm]; renderCart(); }
+});
+$("#cartBtn").onclick = () => openCart(true);
+$("#close").onclick = $("#ov").onclick = () => openCart(false);
+document.addEventListener("keydown", e => { if (e.key==="Escape") openCart(false); });
+$("#langBtn").onclick = () => { lang = lang==="fr" ? "ar" : "fr"; applyLang(); };
+$("#q").addEventListener("input", renderGrid);
+
+/* Validation */
+function normPhone(v){
+  let s = v.replace(/[\s.\-()]/g,"");
+  s = s.replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d)); // Arabic-Indic digits
+  if (s.startsWith("+213")) s = "0"+s.slice(4);
+  else if (s.startsWith("00213")) s = "0"+s.slice(5);
+  return s;
+}
+function validate(){
+  const v = {name:$("#cName").value.trim(), phone:normPhone($("#cPhone").value), city:$("#cCity").value.trim(), addr:$("#cAddr").value.trim()};
+  const rules = {Name:v.name.length>=2, Phone:/^0[567]\d{8}$/.test(v.phone)||/^0[23489]\d{7,8}$/.test(v.phone), City:v.city.length>=2, Addr:v.addr.length>=5};
+  let ok = true, first = null;
+  for (const k in rules){
+    $("#e"+k).textContent = rules[k] ? "" : t("e"+k);
+    $("#c"+k).classList.toggle("bad", !rules[k]);
+    if (!rules[k]){ ok=false; first = first || $("#c"+k); }
+  }
+  if (first) first.focus();
+  return ok ? v : null;
+}
+
+function buildOrder(v){
+  let total = 0;
+  const lines = Object.keys(cart).map((id,i) => { const p=find(id), q=cart[id]; total+=p.price*q; return `${i+1}. ${nm(p)} × ${q} = ${money(p.price*q)}`; });
+  return `🛒 *${t("msgHead")} – ${STORE_NAME}*\n\n*${t("msgItems")}:*\n${lines.join("\n")}\n\n*${t("msgTotal")}: ${money(total)}*\n${t("msgFee")}\n\n👤 ${t("msgCust")}: ${v.name}\n📞 ${t("msgPhone")}: ${v.phone}\n📍 ${t("msgCity")}: ${v.city}\n🏠 ${t("msgAddr")}: ${v.addr}`;
+}
+
+$("#order").onclick = () => {
+  if (!Object.keys(cart).length) return;
+  const v = validate(); if (!v) return;
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(buildOrder(v));
+  const w = window.open(url, "_blank", "noopener");
+  if (!w) location.href = url; // popup blocked (some mobile browsers)
+};
+
+$("#orderOnline").onclick = async () => {
+  if (!Object.keys(cart).length || !SHEETS_URL) return;
+  const v = validate(); if (!v) return;
+  const btn = $("#orderOnline");
+  btn.disabled = true; btn.textContent = t("sending");
+  let total = 0;
+  const items = Object.keys(cart).map(id => { const p = find(id), q = cart[id]; total += p.price*q; return `${p.fr} × ${q} = ${p.price*q} DA`; }).join("\n");
+  try {
+    // no-cors: the request is sent to your Apps Script; the browser cannot read the reply
+    await fetch(SHEETS_URL, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body: JSON.stringify({name:v.name, phone:v.phone, city:v.city, address:v.addr, items, total})});
+    cart = {}; renderCart(); openCart(false); toast(t("sentOk"));
+  } catch(err) {
+    toast(t("sentFail"));
+  } finally {
+    btn.disabled = false; btn.textContent = t("orderOnline");
+  }
+};
+
+/* ============ ADMIN PANEL (owner only) ============ */
+const A = {
+ fr:{title:"Espace vendeur",create:"Créez votre mot de passe",pw:"Mot de passe",pw2:"Confirmer le mot de passe",login:"Se connecter",createBtn:"Enregistrer le mot de passe",bad:"Mot de passe incorrect.",short:"8 caractères minimum.",mism:"Les mots de passe ne correspondent pas.",logout:"Déconnexion",close:"Fermer",add:"Ajouter un produit",edit:"Modifier le produit",nameFr:"Nom (français)",nameAr:"Nom (arabe)",cat:"Catégorie",price:"Prix (DA)",img:"Photo (optionnelle)",save:"Enregistrer le produit",cancel:"Annuler",del:"Supprimer",editBtn:"Modifier",list:"Produits",confirmDel:"Supprimer ce produit ?",errF:"Entrez au moins un nom et un prix valide.",saved:"Enregistré (visible sur cet appareil)",export:"Télécharger products.js",reset:"Annuler mes modifications",confirmReset:"Revenir à la version publiée ? Les modifications non publiées seront perdues.",chpw:"Changer le mot de passe",full:"Stockage plein : réduisez le nombre de photos ou publiez d’abord vos produits.",
+  help:"Vos modifications sont visibles seulement sur cet appareil. Pour les publier : cliquez sur « Télécharger products.js », puis envoyez ce fichier dans votre dépôt GitHub (Add file → Upload files) à côté de index.html."},
+ ar:{title:"لوحة البائع",create:"أنشئ كلمة المرور",pw:"كلمة المرور",pw2:"تأكيد كلمة المرور",login:"تسجيل الدخول",createBtn:"حفظ كلمة المرور",bad:"كلمة المرور غير صحيحة.",short:"8 أحرف على الأقل.",mism:"كلمتا المرور غير متطابقتين.",logout:"تسجيل الخروج",close:"إغلاق",add:"إضافة منتج",edit:"تعديل المنتج",nameFr:"الاسم (بالفرنسية)",nameAr:"الاسم (بالعربية)",cat:"الصنف",price:"السعر (د.ج)",img:"صورة (اختيارية)",save:"حفظ المنتج",cancel:"إلغاء",del:"حذف",editBtn:"تعديل",list:"المنتجات",confirmDel:"حذف هذا المنتج؟",errF:"أدخل اسماً واحداً على الأقل وسعراً صحيحاً.",saved:"تم الحفظ (ظاهر على هذا الجهاز)",export:"تحميل products.js",reset:"إلغاء تعديلاتي",confirmReset:"العودة إلى النسخة المنشورة؟ ستضيع التعديلات غير المنشورة.",chpw:"تغيير كلمة المرور",full:"المساحة ممتلئة: قلّل عدد الصور أو انشر منتجاتك أولاً.",
+  help:"تعديلاتك ظاهرة على هذا الجهاز فقط. للنشر: اضغط «تحميل products.js» ثم ارفع الملف إلى مستودع GitHub (Add file ← Upload files) بجانب index.html."}
+};
+const a = k => A[lang][k];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const clean = s => s.replace(/[<>"]/g, "").trim();
+const adm = document.createElement("div"); adm.id = "admin"; adm.hidden = true; document.body.appendChild(adm);
+let unlocked = false, pwMode = false, editing = null, imgData = "";
+try { unlocked = sessionStorage.getItem("adm") === "1"; } catch(e){}
+
+async function hashPw(pw){
+  const s = "dar|" + STORE_NAME + "|" + pw;
+  try { if (window.crypto && crypto.subtle) return [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)))].map(b => b.toString(16).padStart(2,"0")).join(""); } catch(e){}
+  let h = 5381; for (let i=0;i<s.length;i++) h = ((h<<5)+h+s.charCodeAt(i))|0; return "x"+h;
+}
+function saveDraft(){
+  try { localStorage.setItem("draft", JSON.stringify({products:PRODUCTS, adminHash:ADMIN_HASH})); return true; }
+  catch(e){ toast(a("full")); return false; }
+}
+function resizeImg(file){
+  return new Promise((ok,no) => {
+    const r = new FileReader();
+    r.onload = () => { const im = new Image(); im.onload = () => {
+      const k = Math.min(1, 560/Math.max(im.width,im.height)), c = document.createElement("canvas");
+      c.width = Math.round(im.width*k); c.height = Math.round(im.height*k);
+      const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0,0,c.width,c.height); x.drawImage(im,0,0,c.width,c.height);
+      ok(c.toDataURL("image/jpeg", .72)); };
+      im.onerror = no; im.src = r.result; };
+    r.onerror = no; r.readAsDataURL(file);
+  });
+}
+function openAdmin(){ adm.hidden = false; document.body.style.overflow = "hidden"; renderAdmin(); }
+function closeAdmin(){ adm.hidden = true; document.body.style.overflow = ""; if (location.hash === "#admin") history.replaceState(null, "", location.pathname + location.search); }
+
+function renderAdmin(){
+  const box = h => { adm.innerHTML = `<div class="ap"><div class="dh"><h2>${a("title")}</h2><button class="x" data-a="close" aria-label="${a("close")}">×</button></div><div class="db">${h}</div></div>`; };
+  if (!ADMIN_HASH || pwMode){
+    box(`<h3>${a("create")}</h3><label>${a("pw")}</label><input class="f" id="p1" type="password" autocomplete="new-password"><label>${a("pw2")}</label><input class="f" id="p2" type="password" autocomplete="new-password"><div class="err" id="pe"></div><div class="ab"><button class="btn" data-a="setpw">${a("createBtn")}</button></div><p class="note">${a("help")}</p>`);
+    return;
+  }
+  if (!unlocked){
+    box(`<label>${a("pw")}</label><input class="f" id="p1" type="password" autocomplete="current-password"><div class="err" id="pe"></div><div class="ab"><button class="btn" data-a="login">${a("login")}</button></div>`);
+    return;
+  }
+  const e = editing ? find(editing) : null;
+  const opts = CATEGORIES.map(c => `<option value="${c.id}" ${e&&e.cat===c.id?"selected":""}>${nm(c)}</option>`).join("");
+  const rows = PRODUCTS.map(p => `<div class="item"><img src="${p.img||ph(p)}" alt=""><div><strong>${esc(nm(p))}</strong><div>${money(p.price)}</div></div><div class="ab" style="margin:0"><button class="btn ghost sm" data-a="edit" data-id="${p.id}">${a("editBtn")}</button><button class="btn del sm" data-a="del" data-id="${p.id}">${a("del")}</button></div></div>`).join("");
+  box(`<div class="help">${a("help")}</div><div class="ag"><div>
+    <h3>${e?a("edit"):a("add")}</h3>
+    <label>${a("nameFr")}</label><input class="f" id="aFr" value="${esc(e?e.fr:"")}">
+    <label>${a("nameAr")}</label><input class="f" id="aAr" dir="rtl" value="${esc(e?e.ar:"")}">
+    <label>${a("cat")}</label><select class="f" id="aCat">${opts}</select>
+    <label>${a("price")}</label><input class="f" id="aPrice" type="number" min="1" step="1" inputmode="numeric" value="${e?e.price:""}">
+    <label>${a("img")}</label><input class="f" id="aImg" type="file" accept="image/*">
+    <img class="prev" id="prev" alt="" ${imgData?`src="${imgData}"`:"hidden"}>
+    <div class="err" id="ae"></div>
+    <div class="ab"><button class="btn" data-a="save">${a("save")}</button>${e?`<button class="btn ghost" data-a="cancel">${a("cancel")}</button>`:""}</div>
+  </div><div><h3>${a("list")} (${PRODUCTS.length})</h3><div class="al">${rows}</div></div></div>
+  <div class="ab"><button class="btn" data-a="export">${a("export")}</button><button class="btn ghost" data-a="reset">${a("reset")}</button><button class="btn ghost" data-a="chpw">${a("chpw")}</button><button class="btn ghost" data-a="logout">${a("logout")}</button></div>`);
+}
+
+adm.addEventListener("click", async ev => {
+  if (ev.target === adm) return closeAdmin();
+  const b = ev.target.closest("[data-a]"); if (!b) return;
+  const k = b.dataset.a, id = b.dataset.id;
+  if (k === "close") closeAdmin();
+  else if (k === "login"){
+    if (await hashPw($("#p1").value) === ADMIN_HASH){ unlocked = true; try { sessionStorage.setItem("adm","1"); } catch(e){} renderAdmin(); }
+    else $("#pe").textContent = a("bad");
+  }
+  else if (k === "setpw"){
+    const p1 = $("#p1").value, p2 = $("#p2").value;
+    if (p1.length < 8) $("#pe").textContent = a("short");
+    else if (p1 !== p2) $("#pe").textContent = a("mism");
+    else { ADMIN_HASH = await hashPw(p1); unlocked = true; pwMode = false; try { sessionStorage.setItem("adm","1"); } catch(e){} saveDraft(); renderAdmin(); }
+  }
+  else if (k === "logout"){ unlocked = false; try { sessionStorage.removeItem("adm"); } catch(e){} renderAdmin(); }
+  else if (k === "chpw"){ pwMode = true; renderAdmin(); }
+  else if (k === "edit"){ editing = id; const p = find(id); imgData = p.img || ""; renderAdmin(); }
+  else if (k === "cancel"){ editing = null; imgData = ""; renderAdmin(); }
+  else if (k === "del"){
+    if (!confirm(a("confirmDel"))) return;
+    PRODUCTS = PRODUCTS.filter(p => p.id != id); if (editing == id){ editing = null; imgData = ""; }
+    saveDraft(); renderGrid(); renderCart(); renderAdmin();
+  }
+  else if (k === "save"){
+    let fr = clean($("#aFr").value), ar = clean($("#aAr").value);
+    const price = parseInt($("#aPrice").value, 10), pc = $("#aCat").value;
+    fr = fr || ar; ar = ar || fr;
+    if (!fr || !(price > 0)){ $("#ae").textContent = a("errF"); return; }
+    const old = editing ? find(editing) : null, co = CATEGORIES.find(c => c.id === pc);
+    const p = {id: old ? old.id : Math.max(0, ...PRODUCTS.map(x => x.id)) + 1, cat: pc, price, e: (old && old.cat === pc && old.e) || co.e, c: (old && old.c) || "#0f4c3a", img: imgData, fr, ar};
+    PRODUCTS = old ? PRODUCTS.map(x => x.id == old.id ? p : x) : [...PRODUCTS, p];
+    editing = null; imgData = "";
+    if (saveDraft()) toast(a("saved"));
+    renderGrid(); renderCart(); renderAdmin();
+  }
+  else if (k === "export"){
+    const txt = "/* Generated by the store admin panel. Upload this file next to index.html. */\nwindow.STORE_DATA=" + JSON.stringify({products:PRODUCTS, adminHash:ADMIN_HASH}) + ";\n";
+    const u = URL.createObjectURL(new Blob([txt], {type:"text/javascript"})), l = document.createElement("a");
+    l.href = u; l.download = "products.js"; document.body.appendChild(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(u), 1000);
+  }
+  else if (k === "reset"){
+    if (!confirm(a("confirmReset"))) return;
+    try { localStorage.removeItem("draft"); } catch(e){}
+    location.reload();
+  }
+});
+adm.addEventListener("change", async ev => {
+  if (ev.target.id !== "aImg" || !ev.target.files[0]) return;
+  try { imgData = await resizeImg(ev.target.files[0]); const pv = $("#prev"); pv.src = imgData; pv.hidden = false; } catch(e){}
+});
+adm.addEventListener("keydown", ev => {
+  if (ev.key === "Enter" && ev.target.type === "password"){ const bt = adm.querySelector("[data-a=login],[data-a=setpw]"); if (bt) bt.click(); }
+});
+
+$("#wilayas").innerHTML = WILAYAS.map(w => `<option value="${w}">`).join("");
+$("#waLink").href = "https://wa.me/" + WHATSAPP_NUMBER;
+if (!SHEETS_URL) $("#orderOnline").style.display = "none";
+applyLang();
+window.addEventListener("hashchange", () => { if (location.hash === "#admin") openAdmin(); });
+if (location.hash === "#admin") openAdmin();
+</script>
+</body>
+</html>
